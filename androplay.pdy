@@ -1,0 +1,54 @@
+application:
+    name: "MusicPlayerApp"
+    version: "1.0"
+    source_dir: "."
+    main_script: "main.py"
+
+    # Указываем путь к иконкам
+    resources:
+        - "icons/play.png"
+        - "icons/pause.png"
+        - "icons/add.png"
+
+    # Python-модули, которые используются в приложении
+    python:
+        version: "3.8"
+        stdlib_modules: []
+
+    # Внешние библиотеки и модули, которые должны быть включены
+    packages:
+        - PyQt5.QtCore
+        - PyQt5.QtGui
+        - PyQt5.QtWidgets
+        - PyQt5.QtMultimedia
+
+    # Исключаем ненужные модули для уменьшения размера приложения
+    excluded_modules:
+        - test
+        - tkinter
+        - email
+
+target:
+    platforms:
+        - android
+
+    # Настройка Android-платформы
+    android:
+        sdk: "/path/to/android/sdk"  # Укажите путь к вашему Android SDK
+        ndk: "/path/to/android/ndk"  # Укажите путь к вашему Android NDK
+
+        # Опциональные настройки
+        min_sdk_version: "21"
+        target_sdk_version: "30"
+        ndk_api: "21"
+        ndk_toolchain: "clang"
+        architecture: "armeabi-v7a"
+
+    # Установка необходимых флагов для компиляции
+    compiler_flags:
+        cxxflags: "-std=c++11"
+        ldflags: ""
+
+sysroot:
+    host_platform: "linux"
+    sysroot_dir: "sysroot"
